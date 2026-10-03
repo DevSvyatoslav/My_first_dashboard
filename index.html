@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agents Dashboard | My Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="header-logo">NEXUS <span class="ai-logo">AI</span></div>
+    <h1 class="header-title" id="dashboardTitle" data-ru="Панель управления ИИ" data-en="AI Control Panel">Панель управления ИИ</h1>
+
+    <div class="header-controls">
+      <button class="btn" id="langToggle" type="button">EN</button>
+      <button class="btn" id="themeToggle" type="button">🌓 Тема</button>
+    </div>
+  </header>
+
+  <main class="dashboard-grid">
+
+    <section class="stats-cards">
+
+      <article class="card">
+        <h2 class="card-title" data-ru="Активные боты" data-en="Active Bots">Активные боты</h2>
+        <p class="card-value text-green">12 &uarr;</p>
+      </article>
+
+      <article class="card">
+        <h2 class="card-title" data-ru="Общая прибыль" data-en="Total Profit">Общая прибыль</h2>
+        <p class="card-value text-green">$ 4,250 &uarr;</p>
+      </article>
+
+      <article class="card">
+        <h2 class="card-title" data-ru="Выполнено задач" data-en="Tasks Completed">Выполнено задач</h2>
+        <p class="card-value">1,240 &darr;</p>
+      </article>
+
+      <article class="card">
+        <h2 class="card-title" data-ru="Время работы" data-en="Uptime">Время работы</h2>
+        <p class="card-value">99.9%</p>
+      </article>
+
+      <article class="card">
+        <h2 class="card-title" data-ru="Потрачено токенов" data-en="Tokens Used">Потрачено токенов</h2>
+        <p class="card-value text-orange">1.2M &uarr;</p>
+      </article>
+
+      <article class="card">
+        <h2 class="card-title" data-ru="Средний пинг" data-en="Average Ping">Средний пинг</h2>
+        <p class="card-value text-green" id="pingValue">24 ms</p>
+      </article>
+
+    </section>
+
+    <section class="details-section">
+
+      <article class="card card-table">
+        <h2 class="card-title" data-ru="Статистика ИИ-агентов" data-en="AI Agents Performance">Статистика ИИ-агентов</h2>
+        <table class="agent-table">
+          <thead>
+            <tr>
+              <th data-ru="Имя бота" data-en="Bot Name">Имя бота</th>
+              <th data-ru="Статус" data-en="Status">Статус</th>
+              <th data-ru="Задачи" data-en="Tasks">Задачи</th>
+              <th data-ru="Прибыль" data-en="Profit">Прибыль</th>
+            </tr>
+          </thead>
+          <tbody id="agentTableBody"></tbody>
+        </table>
+      </article>
+
+      <article class="card card-csat">
+        <h2 class="card-title" data-ru="Рейтинг системы" data-en="System Rating">Рейтинг системы</h2>
+        <div class="csat-value">97</div>
+      </article>
+
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
