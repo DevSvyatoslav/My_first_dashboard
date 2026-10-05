@@ -70,6 +70,8 @@ langBtn.onclick = function () {
     for (let i = 0; i < items.length; i++) {
         items[i].textContent = items[i].getAttribute("data-" + lang);
     }
+    
+    buildSlaChart(lang);
 };
 
 // csat chart
@@ -97,35 +99,49 @@ new Chart(csatCanvas, {
 
 // sla chart
 let slaCanvas = document.getElementById("slaChart");
-let darkNow = document.documentElement.getAttribute("data-theme") === "dark";
+let days = {
+    ru: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+    en: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+};
+let slaChart = null;
 
-new Chart(slaCanvas, {
-    type: "bar",
-    data: {
-        labels: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
-        datasets: [{
-            label: "tasks",
-            data: [180, 240, 195, 310, 275, 160, 220],
-            backgroundColor: "#3b82f6",
-            borderRadius: 8,
-            barThickness: 32
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { display: false }
+function buildSlaChart(lang) {
+    if (slaChart) {
+        slaChart.destroy();
+    }
+
+    let darkNow = document.documentElement.getAttribute("data-theme") === "dark";
+
+    slaChart = new Chart(slaCanvas, {
+        type: "bar",
+        data: {
+            labels: days[lang],
+            datasets: [{
+                label: "tasks",
+                data: [180, 240, 195, 310, 275, 160, 220],
+                backgroundColor: "#3b82f6",
+                borderRadius: 8,
+                barThickness: 32
+            }]
         },
-        scales: {
-            x: {
-                ticks: { color: darkNow ? "#f8fafc" : "#0f172a" },
-                grid: { display: false }
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
             },
-            y: {
-                ticks: { color: darkNow ? "#f8fafc" : "#0f172a" },
-                grid: { color: darkNow ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)" }
+            scales: {
+                x: {
+                    ticks: { color: darkNow ? "#f8fafc" : "#0f172a" },
+                    grid: { display: false }
+                },
+                y: {
+                    ticks: { color: darkNow ? "#f8fafc" : "#0f172a" },
+                    grid: { color: darkNow ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)" }
+                }
             }
         }
-    }
-});
+    });
+}
+
+buildSlaChart(lang);
